@@ -1,0 +1,6 @@
+.bg-pic {
+  background-image: url(../../assets/cookiesSectionBg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
