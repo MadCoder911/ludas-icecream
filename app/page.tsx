@@ -8,6 +8,9 @@ export default function Home() {
       <main>
         <Hero />
         <CookiesSection />
+        <CookiesSection />
+        <CookiesSection />
+        <CookiesSection />
       </main>
     </>
   );

@@ -1,9 +1,10 @@
 import hero from "../../assets/hero.svg";
 import Navbar from "../navbar/Navbar";
 import "./hero.css";
+
 const Hero = () => {
   return (
-    <div className=" h-[100vh] backgroundSetting  w-[100vw] relative">
+    <div className=" h-[100vh] backgroundSetting  max-w-[100vw] relative">
       <div className="absolute  top-[30%] translate-y-[-50%] left-[50%] translate-x-[-50%] flex flex-col justify-center items-center">
         <h1 className="text-white font-bold text-[45px] w-[600px] text-center ">
           The best place to buy protein ice cream
