@@ -6,7 +6,8 @@ import cookiePack from "../../assets/cookiePack.png";
 import "./cookies.css";
 import Seperator from "../seperator/Seperator";
 import { FunctionComponent } from "react";
-const CookiesSection: FunctionComponent<Section> = () => {
+//: FunctionComponent<Section>
+const CookiesSection = () => {
   return (
     <div className=" h-[1080px] max-w-[100vw] flex justify-center bg-pic relative overflow-visible">
       <Image
