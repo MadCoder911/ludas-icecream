@@ -47,7 +47,7 @@ const CookiesSection = ({
           </h2>
           <p className="mt-[20px]">{long_description}</p>
         </div>
-        <div className="flex flex-col justify-center items-center mt-[30px]">
+        <div className="flex flex-col justify-center items-center mt-[30px] md:block md:mt-0">
           {id === "brownies" && (
             <Image
               src={browniesPack}
