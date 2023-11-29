@@ -38,8 +38,8 @@ const CookiesSection = ({
       } ${id === "vanilla" && "bg-Vanilla"}`}
     >
       {title}
-      <div className=" md:flex container md:pt-[270px] pt-[200px] block md:justify-between text-white">
-        <div className="md:w-[34%] w-[100%]">
+      <div className=" md:flex container md:pt-[270px] pt-[220px] block md:justify-between text-white">
+        <div className="md:w-[34%] w-[100%] ">
           <Image src={logo} width={150} height={86} alt="logo" />
           <h1 className="my-[10px] font-[600] text-[25px]">{name}</h1>
           <h2 className="my-[10px] font-[600] text-[17px]">
