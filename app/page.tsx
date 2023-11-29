@@ -5,6 +5,7 @@ import browniesTitle from "../assets/brownies/browniesTitle.png";
 import cookiesTitle from "../assets/cookies/cookiesTitle.png";
 import biscuitTitle from "../assets/lotus/lotusTitle.png";
 import vanillaTitle from "../assets/vanilla/vanillaTitle.png";
+import Email from "@/components/email/Email";
 export default function Home() {
   return (
     <>
@@ -18,7 +19,7 @@ export default function Home() {
             <Image
               src={cookiesTitle}
               alt="cookies&cream"
-              className=" absolute top-[90px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
+              className=" absolute top-[50px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
             />
           }
           short_description={
@@ -37,7 +38,7 @@ export default function Home() {
             <Image
               src={browniesTitle}
               alt="brownies"
-              className=" absolute top-[90px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
+              className=" absolute top-[50px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
             />
           }
           short_description={
@@ -56,7 +57,7 @@ export default function Home() {
             <Image
               src={biscuitTitle}
               alt="cookies&cream"
-              className=" absolute top-[90px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
+              className=" absolute top-[50px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
             />
           }
           short_description={
@@ -75,7 +76,7 @@ export default function Home() {
             <Image
               src={vanillaTitle}
               alt="cookies&cream"
-              className=" absolute top-[90px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
+              className=" absolute top-[50px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
             />
           }
           short_description={
@@ -87,6 +88,7 @@ export default function Home() {
           price_before={250}
           price_after={200}
         />
+        <Email />
       </main>
     </>
   );

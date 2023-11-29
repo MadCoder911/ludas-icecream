@@ -5,7 +5,7 @@ const Seperator = () => {
     <Image
       src={seperator}
       alt="Seperator"
-      className="absolute md:bottom-[-75px] lg:bottom-[-95px] max-w-[100%] bottom-[-50px] z-[100]"
+      className="absolute md:bottom-[-75px] lg:bottom-[-95px] max-w-[100%] bottom-[-40px] z-[100]"
     />
   );
 };

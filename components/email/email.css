@@ -1,0 +1,6 @@
+.bg-Email {
+  background-image: url(../../assets/emailCover.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
