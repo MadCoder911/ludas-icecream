@@ -5,7 +5,7 @@ import { PiShoppingCart } from "react-icons/pi";
 import { AiOutlineSearch } from "react-icons/ai";
 const Navbar = () => {
   return (
-    <div className="container absolute top-0 left-[50%] translate-x-[-50%] flex justify-between items-center h-[120px] z-10">
+    <div className="container absolute hidden top-0 left-[50%] translate-x-[-50%] md:flex justify-between items-center h-[120px] z-10">
       <a href="/">
         {" "}
         <Image src={logo} width={150} height={86} alt="logo" />

@@ -1,37 +1,83 @@
 import Image from "next/image";
-import cookiesBg from "../../assets/cookiesSectionBg.png";
-import cookieTitle from "../../assets/cookiesTitle.png";
+
+import cookieTitle from "../../assets/cookies/cookiesTitle.png";
+
 import logo from "../../assets/logo.png";
-import cookiePack from "../../assets/cookiePack.png";
+import cookiePack from "../../assets/cookies/cookiePack.png";
+import browniesPack from "../../assets/brownies/browniesPack.png";
+import vanillaPack from "../../assets/vanilla/vanillapack.png";
+import biscuitPack from "../../assets/lotus/lotusPack.png";
 import "./cookies.css";
 import Seperator from "../seperator/Seperator";
 import { FunctionComponent } from "react";
-//: FunctionComponent<Section>
-const CookiesSection = () => {
+interface Section {
+  id: string;
+  name: string;
+  title: any;
+  short_description: string;
+  long_description: string;
+  price_before: number;
+  price_after: number;
+}
+
+const CookiesSection = ({
+  id,
+  name,
+  title,
+  short_description,
+  long_description,
+  price_before,
+  price_after,
+}: Section) => {
   return (
-    <div className=" h-[1080px] max-w-[100vw] flex justify-center bg-pic relative overflow-visible">
-      <Image
-        src={cookieTitle}
-        alt="cookie Title"
-        className=" absolute top-[110px] w-[480px] left-[50%] translate-x-[-50%]"
-      />
-      <div className=" flex container pt-[270px]  justify-between text-white">
-        <div className="w-[34%]">
+    <div
+      className={`h-[1080px] max-w-[100vw] flex justify-center bg-Cookie relative overflow-visible ${
+        id === "cookies" && "bg-cookie"
+      } ${id === "brownies" && "bg-Brownies"} ${
+        id === "biscuit" && "bg-Biscuit"
+      } ${id === "vanilla" && "bg-Vanilla"}`}
+    >
+      {title}
+      <div className=" md:flex container md:pt-[270px] pt-[200px] block md:justify-between text-white">
+        <div className="md:w-[34%] w-[100%]">
           <Image src={logo} width={150} height={86} alt="logo" />
-          <h1 className="my-[10px] font-[600] text-[25px]">Cookies & Cream</h1>
+          <h1 className="my-[10px] font-[600] text-[25px]">{name}</h1>
           <h2 className="my-[10px] font-[600] text-[17px]">
-            Indulge in the deliciousness of our protein-packed ice cream.
+            {short_description}
           </h2>
-          <p className="mt-[20px]">
-            Made with the finest ingredients, our ice cream is not only tasty
-            but also nutritious. Treat yourself to a guilt-free dessert and
-            support local vendors. Add to your cart now!
-          </p>
+          <p className="mt-[20px]">{long_description}</p>
         </div>
-        <div>
-          <Image src={cookiePack} alt="Cookie pack" className="max-w-[400px]" />
+        <div className="flex flex-col justify-center items-center mt-[30px]">
+          {id === "brownies" && (
+            <Image
+              src={browniesPack}
+              alt="Cookie pack"
+              className="max-w-[300px]  md:max-w-[400px]"
+            />
+          )}
+          {id === "vanilla" && (
+            <Image
+              src={vanillaPack}
+              alt="Cookie pack"
+              className="max-w-[300px]  md:max-w-[400px]"
+            />
+          )}
+          {id === "biscuit" && (
+            <Image
+              src={biscuitPack}
+              alt="Cookie pack"
+              className="max-w-[300px]  md:max-w-[400px]"
+            />
+          )}
+          {id === "cookies" && (
+            <Image
+              src={cookiePack}
+              alt="Cookie pack"
+              className="max-w-[300px]  md:max-w-[400px]"
+            />
+          )}
           <p className="my-[10px] font-[600] text-[17px] mt-[30px]">
-            Luda’s Cookies & Cream - Protein Ice Cream
+            Luda’s {name} - Protein Ice Cream
           </p>
           <div className="flex font-[600] text-[17px]">
             <p>200 EGP</p>

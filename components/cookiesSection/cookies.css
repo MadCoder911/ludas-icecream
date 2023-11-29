@@ -1,5 +1,23 @@
-.bg-pic {
-  background-image: url(../../assets/cookiesSectionBg.png);
+.bg-Cookie {
+  background-image: url(../../assets/cookies/cookiesSectionBg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-Biscuit {
+  background-image: url(../../assets/lotus/lotusbg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-Brownies {
+  background-image: url(../../assets/brownies/browniesBg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-Vanilla {
+  background-image: url(../../assets/vanilla/vanillaBg.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
