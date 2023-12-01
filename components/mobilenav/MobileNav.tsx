@@ -10,7 +10,7 @@ const MobileNav = () => {
   const [openNav, setOpenNav] = useState<boolean>(false);
   return (
     <>
-      <div className="sticky top-0 z-[9999] bg-[#33a1d8] flex items-center h-[50px] w-[100%] md:hidden shadow-[0px_5px_20px_10px_#00000024]">
+      <div className="absolute top-0 z-[9999] bg-[#33a1d8] flex items-center h-[50px] w-[100%] md:hidden shadow-[0px_5px_20px_10px_#00000024]">
         <div className=" flex justify-between items-center w-[100%] mx-[20px]">
           <Image src={logo} alt="Logo" className=" w-[90px] " />
           <button
