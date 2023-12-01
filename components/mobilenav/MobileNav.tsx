@@ -7,7 +7,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
 const MobileNav = () => {
-  const [openNav, setOpenNav] = useState<boolean>(true);
+  const [openNav, setOpenNav] = useState<boolean>(false);
   return (
     <>
       <div className="sticky top-0 z-[9999] bg-[#33a1d8] flex items-center h-[50px] w-[100%] md:hidden shadow-[0px_5px_20px_10px_#00000024]">
