@@ -28,7 +28,7 @@ const MobileNav = () => {
         </div>
       </div>
       <div
-        className={`absolute transition-all ease-in-out duration-500 md:hidden z-[999] bg-[#33a1d8] h-[50vh] w-[100%] ${
+        className={`absolute transition-all ease-in-out duration-500 md:hidden z-[999] bg-[#33a1d8] h-[50vh] w-[100%] shadow-[0px_50px_50px_50px_#00000071] ${
           openNav && "top-[50px]"
         } ${!openNav && "top-[-500px]"}`}
       >
