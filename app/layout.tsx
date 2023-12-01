@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import MobileNav from "@/components/mobilenav/MobileNav";
 
 const inter = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -21,8 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-white">
-      <body className={`${inter.className} bg-white`}>
+      <body className={`${inter.className} bg-white relative`}>
         <Navbar />
+        <MobileNav />
         {children}
         <Footer />
       </body>
