@@ -6,16 +6,31 @@ import { PiShoppingCart } from "react-icons/pi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 const MobileNav = () => {
   const [openNav, setOpenNav] = useState<boolean>(false);
+  const pathname = usePathname();
+
+  const changeBgColor = () => {
+    if (pathname.includes("brownies")) {
+      return "bg-brownie";
+    } else if (pathname.includes("biscuit")) {
+      return "bg-biscuit";
+    } else if (pathname.includes("vanilla")) {
+      return "bg-vanilla";
+    } else return "bg-[#33a1d8]";
+  };
   return (
     <>
-      <div className="absolute top-0 z-[9999] bg-[#33a1d8] flex items-center h-[50px] w-[100%] md:hidden shadow-[0px_5px_20px_10px_#00000024]">
+      <div
+        className={`${changeBgColor()} absolute top-0 z-[9999]  flex items-center h-[50px] w-[100%] md:hidden shadow-[0px_5px_20px_10px_#00000024]`}
+      >
         <div className=" flex justify-between items-center w-[100%] mx-[20px]">
-          <Image src={logo} alt="Logo" className=" w-[90px] " />
+          <a href="/">
+            <Image src={logo} alt="Logo" className=" w-[90px] " />
+          </a>
           <button
             onClick={() => {
-              console.log(openNav);
               setOpenNav(!openNav);
             }}
           >
@@ -28,7 +43,7 @@ const MobileNav = () => {
         </div>
       </div>
       <div
-        className={`absolute transition-all ease-in-out duration-500 md:hidden z-[999] bg-[#33a1d8] h-[50vh] w-[100%] shadow-[0px_50px_50px_50px_#00000071] ${
+        className={`absolute transition-all ease-in-out duration-500 md:hidden z-[999] ${changeBgColor()} h-[50vh] w-[100%] shadow-[0px_50px_50px_50px_#00000071] ${
           openNav && "top-[50px]"
         } ${!openNav && "top-[-500px]"}`}
       >

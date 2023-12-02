@@ -10,6 +10,7 @@ import biscuitPack from "../../assets/lotus/lotusPack.png";
 import "./cookies.css";
 import Seperator from "../seperator/Seperator";
 import { FunctionComponent } from "react";
+import Link from "next/link";
 interface Section {
   id: string;
   name: string;
@@ -83,9 +84,12 @@ const CookiesSection = ({
             <p>200 EGP</p>
             <p className="decoration-dashed ml-[10px]">250 EGP</p>
           </div>
-          <button className="w-[100%] hover:scale-105 transition-all ease-in-out bg-white py-[5px] mt-[20px] text-black rounded-[5px] shadow-[0px_7px_10px_0px_#00000024]">
+          <Link
+            href={`/products/${id}`}
+            className="shadow-[0px_7px_10px_0px_#00000024] w-[100%] flex items-center justify-center bg-white text-black rounded-[5px] mt-[10px] py-1 hover:scale-105 transition-all  ease-in-out"
+          >
             Order Now
-          </button>
+          </Link>
         </div>
       </div>
       <Seperator />

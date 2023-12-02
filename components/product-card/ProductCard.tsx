@@ -1,9 +1,11 @@
 import Image from "next/image";
 import logo from "../../assets/logo.png";
+import Link from "next/link";
 interface ProductCard {
   product_color: string;
   product_title: string;
   product_description: string;
+  product_id: string;
   price: number;
   picture: string;
   background: string;
@@ -12,6 +14,7 @@ const ProductCard = ({
   product_color,
   product_title,
   product_description,
+  product_id,
   price,
   picture,
   background,
@@ -47,7 +50,7 @@ const ProductCard = ({
           Add to Cart
         </button>
         <button className="w-[100%] hover:scale-110 transition-all ease-in-out rounded-[5px] text-center text-black bg-white mt-[10px] shadow-[0px_7px_10px_0px_#00000024]">
-          Buy Now
+          <Link href={`/products/${product_id}`}> Buy Now</Link>
         </button>
       </div>
     </div>
