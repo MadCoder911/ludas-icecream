@@ -1,7 +1,6 @@
 import ProductCard from "@/components/product-card/ProductCard";
 import "./products.css";
-import cookiePack from "../../assets/cookies/snakkCookiesPack.png";
-import cookieBg from "../../assets/cookies/cookieCardBg.png";
+
 const page = () => {
   return (
     <main className="bg-Products min-h-[100vh] flex justify-center ">
