@@ -11,7 +11,7 @@ const page = () => {
         <div className="flex gap-[120px] flex-wrap justify-center md:justify-start mb-[80px] ">
           <ProductCard
             product_color="bg-cookie"
-            product_title={"Chocolate Brownies"}
+            product_title={"Cookies & Cream"}
             product_description={
               "Made with the finest ingredients, our ice cream is not only tasty but also nutritious. "
             }
