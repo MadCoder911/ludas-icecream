@@ -8,7 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {},
+      colors: {
+        cookie: "#4FBBFB",
+        brownie: "#996955",
+        biscuit: "#FDBF79",
+        vanilla: "#F8DA9B",
+      },
     },
   },
   plugins: [],

@@ -13,10 +13,10 @@ const Navbar = () => {
 
       <ul className="flex justify-between items-center text-white text-[20px]">
         <li className="mx-[20px] px-[20px] cursor-pointer hover:scale-105 transition-all ease-in-out">
-          <a href="#">Home</a>
+          <a href="/">Home</a>
         </li>
         <li className="mx-[20px] px-[20px] cursor-pointer hover:scale-105 transition-all ease-in-out">
-          <a href="#">Shop</a>
+          <a href="/products">Shop</a>
         </li>
         <li className="mx-[20px] px-[20px] cursor-pointer hover:scale-105 transition-all ease-in-out">
           <a href="#">Contact</a>

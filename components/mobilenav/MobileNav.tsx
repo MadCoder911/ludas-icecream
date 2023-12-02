@@ -35,12 +35,12 @@ const MobileNav = () => {
         <div className="mx-[20px]">
           <ul className="w-[100%] mt-[20px] flex flex-col items-center gap-[60px] text-white text-[20px]">
             <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-              <a href="#">Home</a>
+              <a href="/">Home</a>
             </li>
             <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-              <a href="#">Shop</a>
+              <a href="/products">Shop</a>
             </li>
-            <li className="] cursor-pointer hover:scale-105 transition-all ease-in-out">
+            <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
               <a href="#">Contact</a>
             </li>
           </ul>
