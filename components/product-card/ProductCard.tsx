@@ -35,7 +35,7 @@ const ProductCard = ({
         height={348}
       />
       <Image src={logo} alt="logo" className="w-[100px] " />
-      <p className="mt-[20px] font-semibold max-w-[60%] text-[16px]">
+      <p className="mt-[20px] font-semibold max-w-[60%] text-[20px]">
         {product_title}
       </p>
       <p className="mt-[10px] font-light text-[13px] lg:text-[14px] max-w-[60%] lg:max-w-[70%]">
@@ -49,9 +49,12 @@ const ProductCard = ({
         >
           Add to Cart
         </button>
-        <button className="w-[100%] hover:scale-110 transition-all ease-in-out rounded-[5px] text-center text-black bg-white mt-[10px] shadow-[0px_7px_10px_0px_#00000024]">
-          <Link href={`/products/${product_id}`}> Buy Now</Link>
-        </button>
+        <Link
+          href={`/products/${product_id}`}
+          className="w-[100%] hover:scale-110 transition-all ease-in-out rounded-[5px] text-center text-black bg-white mt-[10px] shadow-[0px_7px_10px_0px_#00000024]"
+        >
+          Buy Now
+        </Link>
       </div>
     </div>
   );
