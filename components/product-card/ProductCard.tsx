@@ -30,7 +30,7 @@ const ProductCard = ({
       <Image
         src={picture}
         alt="pack"
-        className="absolute lg:right-[-110px] right-[-60px] cursor-pointer hover:scale-110 transition-all ease-in-out w-[194px] h-[210px]  "
+        className="absolute md:right-[-70px] right-[-60px] cursor-pointer hover:scale-110 transition-all ease-in-out w-[194px] h-[210px]  "
         width={324}
         height={348}
       />
