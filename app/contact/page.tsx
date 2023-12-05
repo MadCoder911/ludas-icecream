@@ -55,7 +55,7 @@ const page = () => {
           ></textarea>
           <button
             type="button"
-            className="bg-cookie py-2  text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024]"
+            className="bg-cookie py-2  text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
             onClick={(e) => handleSubmit(e)}
           >
             Send Message
