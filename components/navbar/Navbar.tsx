@@ -25,7 +25,7 @@ const Navbar = () => {
       </ul>
       <div className="flex justify-between">
         {/* <Search /> */}
-        <a href="#">
+        <a href="/cart">
           <PiShoppingCart className="w-[25px] h-[25px] text-white  mx-[10px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
         </a>
       </div>

@@ -63,7 +63,7 @@ const MobileNav = () => {
             <a href="#">
               <AiOutlineSearch className="w-[25px] h-[25px] text-white mx-[30px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
             </a>
-            <a href="#">
+            <a href="/cart">
               <PiShoppingCart className="w-[25px] h-[25px] text-white  mx-[30px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
             </a>
           </div>
