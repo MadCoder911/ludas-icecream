@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cookie: "#4FBBFB",
-        brownie: "#996955",
+        cookies: "#4FBBFB",
         biscuit: "#FDBF79",
         vanilla: "#F8DA9B",
+        brownies: "#996955",
       },
     },
   },

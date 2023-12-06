@@ -14,6 +14,7 @@ interface PageProps {
 
 const page = ({ params }: PageProps) => {
   const product = params.productId;
+
   let data: Item = {};
   if (product === "cookies") {
     data = cookies;

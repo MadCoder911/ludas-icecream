@@ -1,15 +1,7 @@
 import Image from "next/image";
-
-import cookieTitle from "../../assets/cookies/cookiesTitle.png";
-
 import logo from "../../assets/logo.png";
-import cookiePack from "../../assets/cookies/cookiePack.png";
-import browniesPack from "../../assets/brownies/browniesPack.png";
-import vanillaPack from "../../assets/vanilla/vanillapack.png";
-import biscuitPack from "../../assets/lotus/lotusPack.png";
 import "./cookies.css";
 import Seperator from "../seperator/Seperator";
-import { FunctionComponent } from "react";
 import Link from "next/link";
 interface Section {
   id: string;
@@ -19,6 +11,7 @@ interface Section {
   long_description: string;
   price_before: number;
   price_after: number;
+  home_pic: string;
 }
 
 const CookiesSection = ({
@@ -29,6 +22,7 @@ const CookiesSection = ({
   long_description,
   price_before,
   price_after,
+  home_pic,
 }: Section) => {
   return (
     <div
@@ -38,7 +32,13 @@ const CookiesSection = ({
         id === "biscuit" && "bg-Biscuit"
       } ${id === "vanilla" && "bg-Vanilla"}`}
     >
-      {title}
+      <Image
+        src={title}
+        alt={id}
+        width={330}
+        height={200}
+        className=" absolute top-[50px] md:top-[110px]  w-[330px] md:w-[480px] left-[50%] translate-x-[-50%]"
+      />
       <div className=" md:flex container md:pt-[270px] pt-[220px] block md:justify-between text-white">
         <div className="md:w-[34%] w-[100%] ">
           <Image src={logo} width={150} height={86} alt="logo" />
@@ -49,40 +49,19 @@ const CookiesSection = ({
           <p className="mt-[20px]">{long_description}</p>
         </div>
         <div className="flex flex-col justify-center items-center mt-[30px] md:block md:mt-0">
-          {id === "brownies" && (
-            <Image
-              src={browniesPack}
-              alt="Cookie pack"
-              className="max-w-[300px]  md:max-w-[400px]"
-            />
-          )}
-          {id === "vanilla" && (
-            <Image
-              src={vanillaPack}
-              alt="Cookie pack"
-              className="max-w-[300px]  md:max-w-[400px]"
-            />
-          )}
-          {id === "biscuit" && (
-            <Image
-              src={biscuitPack}
-              alt="Cookie pack"
-              className="max-w-[300px]  md:max-w-[400px]"
-            />
-          )}
-          {id === "cookies" && (
-            <Image
-              src={cookiePack}
-              alt="Cookie pack"
-              className="max-w-[300px]  md:max-w-[400px]"
-            />
-          )}
+          <Image
+            src={home_pic}
+            alt="Cookie pack"
+            width={400}
+            height={400}
+            className="max-w-[300px]  md:max-w-[400px]"
+          />
           <p className="my-[10px] font-[600] text-[17px] mt-[30px]">
             Luda’s {name} - Protein Ice Cream
           </p>
           <div className="flex font-[600] text-[17px]">
-            <p>200 EGP</p>
-            <p className="decoration-dashed ml-[10px]">250 EGP</p>
+            <p>{price_after} EGP</p>
+            <p className="decoration-dashed ml-[10px]">{price_before} EGP</p>
           </div>
           <Link
             href={`/products/${id}`}

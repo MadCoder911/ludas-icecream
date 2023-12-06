@@ -1,3 +1,4 @@
+"use client";
 import "./footer.css";
 import logo from "../../assets/logo.png";
 import Image from "next/image";
@@ -5,7 +6,37 @@ import { LiaPhoneSolid } from "react-icons/lia";
 import { SlEnvolope, SlArrowRight } from "react-icons/sl";
 import { FaTiktok } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
+import { useState } from "react";
 const Footer = () => {
+  const [email, setEmail] = useState<string>();
+  const [error, setError] = useState<string>();
+  const [success, setSuccess] = useState<string>();
+  const handleClick = async () => {
+    console.log(JSON.stringify({ email: email }));
+    if (!email || email.includes(".com") === false) {
+      setError("Please insert a correct email !");
+      return setTimeout(() => {
+        setError("");
+      }, 5000);
+    } else {
+      try {
+        fetch(`${process.env.API_URL}/subscription`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        });
+        setSuccess("You have been subscribed to our email list");
+        setEmail("");
+        return setTimeout(() => {
+          setSuccess("");
+        }, 5000);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
   return (
     <div className="bg-Footer flex items-center justify-center">
       <div className="container relative">
@@ -38,12 +69,18 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="px-2 py-1 w-[100%] rounded-[5px] hover:outline-none focus:outline-none text-black"
               />
-              <button>
+              <button onClick={handleClick}>
                 <SlArrowRight className="absolute  text-black top-[50%] translate-y-[-50%] right-[10px] w-[20px] h-[20px]" />
               </button>
             </div>
+            {error && <p className="mt-2 text-red-700 font-medium">{error}</p>}
+            {success && (
+              <p className="mt-2  text-green-700 font-medium">{success}</p>
+            )}
             <p>We don’t spam, we send offers instead !</p>
           </div>
         </div>

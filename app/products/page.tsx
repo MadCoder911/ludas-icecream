@@ -1,7 +1,20 @@
 import ProductCard from "@/components/product-card/ProductCard";
 import "./products.css";
+async function getAllProducts(): Promise<FeaturedProduct[]> {
+  const products = await fetch(`${process.env.API_URL}/products/`, {
+    next: { revalidate: 1000 },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data;
+    });
 
-const page = () => {
+  return products;
+}
+const page = async () => {
+  const res = await getAllProducts();
   return (
     <main className="bg-Products min-h-[100vh] flex justify-center ">
       <div className="container ">
@@ -9,18 +22,30 @@ const page = () => {
           Products
         </h1>
         <div className="flex gap-[120px] flex-wrap justify-center md:justify-start mb-[80px] ">
-          <ProductCard
-            product_color="bg-cookie"
-            product_title={"Cookies & Cream"}
-            product_description={
-              "Made with the finest ingredients, our ice cream is not only tasty but also nutritious. "
-            }
-            product_id="cookies"
-            price={200}
-            picture={"https://i.imgur.com/mxK6jUD.png"}
-            background={"https://i.imgur.com/3cNh8JS.png"}
-          />
-          <ProductCard
+          {res.map((item, i: number) => {
+            const {
+              name,
+              products_page_description,
+              id,
+              price_after,
+              home_pic,
+              background_pic,
+            } = item;
+
+            return (
+              <ProductCard
+                key={i}
+                product_color={`bg-${id}`}
+                product_title={name}
+                product_description={products_page_description}
+                product_id={id}
+                price={price_after}
+                picture={home_pic}
+                background={background_pic}
+              />
+            );
+          })}
+          {/* <ProductCard
             product_color="bg-brownie"
             product_title={"Chocolate Brownies"}
             product_description={
@@ -52,7 +77,7 @@ const page = () => {
             price={210}
             picture={"https://i.imgur.com/jCGWIH1.png"}
             background={"https://i.imgur.com/WrhWvXE.png"}
-          />
+          /> */}
         </div>
       </div>
     </main>

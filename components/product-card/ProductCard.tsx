@@ -22,6 +22,7 @@ const ProductCard = ({
   const sectionStyle = {
     backgroundImage: `url("${background}")`,
   };
+
   return (
     <div
       style={sectionStyle}
@@ -30,7 +31,7 @@ const ProductCard = ({
       <Image
         src={picture}
         alt="pack"
-        className="absolute md:right-[-70px] right-[-60px] cursor-pointer hover:scale-110 transition-all ease-in-out w-[194px] h-[210px]  "
+        className="absolute md:right-[-45px] right-[-40px] cursor-pointer hover:scale-110 transition-all ease-in-out w-[130px] h-[144px] rotate-[-12deg]  "
         width={324}
         height={348}
       />
