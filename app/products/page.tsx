@@ -45,39 +45,6 @@ const page = async () => {
               />
             );
           })}
-          {/* <ProductCard
-            product_color="bg-brownie"
-            product_title={"Chocolate Brownies"}
-            product_description={
-              "Made with the finest ingredients, our ice cream is not only tasty but also nutritious. "
-            }
-            product_id="brownies"
-            price={210}
-            picture={"https://i.imgur.com/WxM1REy.png"}
-            background={"https://i.imgur.com/wE7WgdX.png"}
-          />
-          <ProductCard
-            product_color="bg-biscuit"
-            product_title={"Buttery Biscuit"}
-            product_description={
-              "Made with the finest ingredients, our ice cream is not only tasty but also nutritious. "
-            }
-            product_id="biscuit"
-            price={210}
-            picture={"https://i.imgur.com/XZExl5Q.png"}
-            background={"https://i.imgur.com/4XoASap.png"}
-          />
-          <ProductCard
-            product_color="bg-vanilla"
-            product_title={"Vanilla"}
-            product_description={
-              "Made with the finest ingredients, our ice cream is not only tasty but also nutritious. "
-            }
-            product_id="vanilla"
-            price={210}
-            picture={"https://i.imgur.com/jCGWIH1.png"}
-            background={"https://i.imgur.com/WrhWvXE.png"}
-          /> */}
         </div>
       </div>
     </main>
