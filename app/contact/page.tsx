@@ -1,21 +1,58 @@
 "use client";
 import { useState } from "react";
 import "./contact.css";
+import { type } from "os";
+import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 const page = () => {
   //state
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<{
     name: string;
-    email: string;
+    contact_method: string;
     message: string;
-  }>({ name: "", email: "", message: "" });
+  }>({ name: "", contact_method: "", message: "" });
   //handle change
   const handleChange = (item: string, value: string) => {
     setFormData({ ...formData, [item]: value });
   };
   //handle submit
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(formData);
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    if (
+      !formData.name ||
+      typeof formData.name !== "string" ||
+      !formData.contact_method ||
+      !formData.message
+    ) {
+      setLoading(false);
+      setError(true);
+      setSuccess(false);
+      return setTimeout(() => {
+        setError(true);
+      }, 5000);
+    } else {
+      try {
+        fetch(`${process.env.API_URL}/messages`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        setError(false);
+        setSuccess(true);
+        setFormData({ name: "", contact_method: "", message: "" });
+        setLoading(false);
+        return setTimeout(() => {
+          setSuccess(false);
+        }, 5000);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
   return (
     <main className="bg-contact min-h-[100vh] flex justify-center ">
@@ -40,8 +77,8 @@ const page = () => {
             id="email"
             placeholder="Email / Phone"
             className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none"
-            value={formData.email}
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            value={formData.contact_method}
+            onChange={(e) => handleChange("contact_method", e.target.value)}
           />
           <textarea
             name="message"
@@ -53,11 +90,22 @@ const page = () => {
             value={formData.message}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
           ></textarea>
+          {error && (
+            <p className="text-red-700">
+              Please fill all the input fields correctly !
+            </p>
+          )}
+          {success && (
+            <p className="text-green-700">
+              Your message has been recieved, we will contact you shortly.
+            </p>
+          )}
           <button
             type="button"
-            className="bg-cookie py-2  text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
-            onClick={(e) => handleSubmit(e)}
+            className="bg-cookie py-2 flex justify-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
+            onClick={handleSubmit}
           >
+            {loading && <LoadingSpinner style="w-4 h-4 mr-2" />}
             Send Message
           </button>
         </form>
