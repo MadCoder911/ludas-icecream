@@ -7,6 +7,7 @@ import { SlEnvolope, SlArrowRight } from "react-icons/sl";
 import { FaTiktok } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { useState } from "react";
+import Link from "next/link";
 const Footer = () => {
   const [email, setEmail] = useState<string>();
   const [error, setError] = useState<string>();
@@ -85,12 +86,12 @@ const Footer = () => {
           </div>
         </div>
         <div className="absolute bottom-[50px] left-[50%] translate-x-[-50%] lg:left-0 lg:translate-x-0 flex text-white">
-          <a href="#" className="mr-[10px]">
+          <Link href="#" className="mr-[10px]">
             <FaTiktok className="w-[20px]  h-[25px]" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <FaInstagram className="w-[20px] h-[25px]" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

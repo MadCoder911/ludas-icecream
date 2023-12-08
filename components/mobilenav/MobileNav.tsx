@@ -7,6 +7,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 const MobileNav = () => {
   const [openNav, setOpenNav] = useState<boolean>(false);
   const pathname = usePathname();
@@ -26,9 +27,9 @@ const MobileNav = () => {
         className={`${changeBgColor()} absolute top-0 z-[9999]  flex items-center h-[50px] w-[100%] md:hidden shadow-[0px_5px_20px_10px_#00000024]`}
       >
         <div className=" flex justify-between items-center w-[100%] mx-[20px]">
-          <a href="/">
+          <Link href="/">
             <Image src={logo} alt="Logo" className=" w-[90px] " />
-          </a>
+          </Link>
           <button
             onClick={() => {
               setOpenNav(!openNav);
@@ -50,22 +51,22 @@ const MobileNav = () => {
         <div className="mx-[20px]">
           <ul className="w-[100%] mt-[20px] flex flex-col items-center gap-[60px] text-white text-[20px]">
             <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-              <a href="/products">Shop</a>
+              <Link href="/products">Shop</Link>
             </li>
             <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-              <a href="#">Contact</a>
+              <Link href="#">Contact</Link>
             </li>
           </ul>
           <div className="flex w-[100%] items-center justify-center mt-[60px]">
-            <a href="#">
+            <Link href="#">
               <AiOutlineSearch className="w-[25px] h-[25px] text-white mx-[30px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
-            </a>
-            <a href="/cart">
+            </Link>
+            <Link href="/cart">
               <PiShoppingCart className="w-[25px] h-[25px] text-white  mx-[30px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

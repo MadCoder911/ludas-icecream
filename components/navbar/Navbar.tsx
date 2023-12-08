@@ -3,31 +3,32 @@ import logo from "../../assets/logo.png";
 import search from "../../assets/search.svg";
 import { PiShoppingCart } from "react-icons/pi";
 import Search from "./Search";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
     <div className="container absolute hidden top-0 left-[50%] translate-x-[-50%] md:flex justify-between items-center h-[120px] z-10">
-      <a href="/">
+      <Link href="/">
         {" "}
         <Image src={logo} width={150} height={86} alt="logo" />
-      </a>
+      </Link>
 
       <ul className="flex justify-between items-center text-white text-[20px]">
         <li className="mx-[20px] px-[20px] cursor-pointer hover:scale-105 transition-all ease-in-out">
-          <a href="/">Home</a>
+          <Link href="/">Home</Link>
         </li>
         <li className="mx-[20px] px-[20px] cursor-pointer hover:scale-105 transition-all ease-in-out">
-          <a href="/products">Shop</a>
+          <Link href="/products">Shop</Link>
         </li>
         <li className="mx-[20px] px-[20px] cursor-pointer hover:scale-105 transition-all ease-in-out">
-          <a href="/contact">Contact</a>
+          <Link href="/contact">Contact</Link>
         </li>
       </ul>
       <div className="flex justify-between">
         {/* <Search /> */}
-        <a href="/cart">
+        <Link href="/cart">
           <PiShoppingCart className="w-[25px] h-[25px] text-white  mx-[10px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
-        </a>
+        </Link>
       </div>
     </div>
   );
