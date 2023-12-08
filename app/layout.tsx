@@ -12,7 +12,7 @@ const inter = Montserrat({
 
 export const metadata: Metadata = {
   title: "Ludas Ice-Cream",
-  description: "Ludas protein ice cream",
+  description: "We offer the best quality, protein rich Ice cream in Egypt",
 };
 
 export default function RootLayout({
