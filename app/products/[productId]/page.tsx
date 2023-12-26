@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 import { setCart } from "@/utils/setCart";
+import Link from "next/link";
 interface PageProps {
   params: {
     productId: string;
@@ -132,11 +133,24 @@ const page = ({ params }: PageProps) => {
               >
                 Add to Cart
               </button>
-              <button
-                className={` shadow-[0px_7px_10px_0px_#00000024] bg-white w-[100%] lg:w-[50%] rounded-[8px] text-black font-medium hover:scale-105 transition-all ease-in-out py-[10px] text-[17px]`}
+              <Link
+                href={"/cart"}
+                onClick={() =>
+                  setCart(
+                    {
+                      name: data.name,
+                      id: data.id,
+                      price: data.price_after,
+                      picture: data.cart_pic,
+                      quantity: quantity,
+                    },
+                    "new"
+                  )
+                }
+                className={` shadow-[0px_7px_10px_0px_#00000024] flex justify-center bg-white w-[100%] lg:w-[50%] rounded-[8px] text-black font-medium hover:scale-105 transition-all ease-in-out py-[10px] text-[17px]`}
               >
                 Buy now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
