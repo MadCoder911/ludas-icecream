@@ -30,3 +30,11 @@ interface FeaturedProduct {
   cart_pic: string;
   featured: boolean;
 }
+
+interface CartObj {
+  id: string;
+  name: string;
+  picture: string;
+  price: number;
+  quantity: number;
+}

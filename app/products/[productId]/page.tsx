@@ -9,6 +9,7 @@ import {
 } from "../../../api-mock-data/products";
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
+import { setCart } from "@/utils/setCart";
 interface PageProps {
   params: {
     productId: string;
@@ -18,11 +19,11 @@ interface PageProps {
 const page = ({ params }: PageProps) => {
   const [data, setData] = useState<FeaturedProduct>();
   const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
     setLoading(true);
     async function getProduct(id: string): Promise<FeaturedProduct> {
-      console.log(`${process.env.API_URL}/products?id=${id}`);
       const product = await fetch(`${process.env.API_URL}/products?id=${id}`, {
         next: { revalidate: 1000 },
       })
@@ -33,13 +34,14 @@ const page = ({ params }: PageProps) => {
           return data;
         });
       setData(product[0]);
-      console.log(product[0]);
+
       return product;
     }
     getProduct(params.productId);
 
     setLoading(false);
   }, []);
+
   const sectionStyle = {
     backgroundImage: `url("${data?.background_pic}")`,
   };
@@ -105,10 +107,27 @@ const page = ({ params }: PageProps) => {
                 name={data?.id}
                 id={data?.id}
                 placeholder="1"
+                value={quantity}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setQuantity(Number(e.target.value));
+                }}
               />
             </div>
             <div className="flex flex-col gap-[20px] ">
               <button
+                onClick={() =>
+                  setCart(
+                    {
+                      name: data.name,
+                      id: data.id,
+                      price: data.price_after,
+                      picture: data.cart_pic,
+                      quantity: quantity,
+                    },
+                    "new"
+                  )
+                }
                 className={` shadow-[0px_7px_10px_0px_#00000024] ${`bg-${data?.id}`} w-[100%] lg:w-[50%] rounded-[8px] text-white font-medium hover:scale-105 transition-all ease-in-out py-[10px] text-[17px]`}
               >
                 Add to Cart

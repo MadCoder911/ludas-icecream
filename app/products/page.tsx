@@ -24,6 +24,7 @@ const page = async () => {
         <div className="flex gap-[120px] flex-wrap justify-center md:justify-start mb-[80px] ">
           {res.map((item, i: number) => {
             const {
+              cart_pic,
               name,
               products_page_description,
               id,
@@ -35,6 +36,7 @@ const page = async () => {
             return (
               <ProductCard
                 key={i}
+                cart_pic={cart_pic}
                 product_color={`bg-${id}`}
                 product_title={name}
                 product_description={products_page_description}

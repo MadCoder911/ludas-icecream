@@ -1,7 +1,10 @@
 import Image from "next/image";
 import logo from "../../assets/logo.png";
 import Link from "next/link";
+import { setCart } from "@/utils/setCart";
+import AddToCart from "../button/AddToCart";
 interface ProductCard {
+  cart_pic: string;
   product_color: string;
   product_title: string;
   product_description: string;
@@ -11,6 +14,7 @@ interface ProductCard {
   background: string;
 }
 const ProductCard = ({
+  cart_pic,
   product_color,
   product_title,
   product_description,
@@ -21,6 +25,7 @@ const ProductCard = ({
 }: ProductCard) => {
   const sectionStyle = {
     backgroundImage: `url("${background}")`,
+    backgroundColor: `${product_color}`,
   };
 
   return (
@@ -45,11 +50,13 @@ const ProductCard = ({
       <p className="mt-[25px] font-light text-[18px]">Price</p>
       <p className="font-semibold text-[18px]">{price} EGP</p>
       <div className="w-[100%] flex flex-col items-center mt-[10px]">
-        <button
-          className={`${product_color} w-[100%] hover:scale-110 transition-all ease-in-out rounded-[5px] text-center  text-white  shadow-[0px_7px_10px_0px_#00000024]`}
-        >
-          Add to Cart
-        </button>
+        <AddToCart
+          product_color={product_color}
+          product_name={product_title}
+          product_id={product_id}
+          price={price}
+          picture={cart_pic}
+        />
         <Link
           href={`/products/${product_id}`}
           className="w-[100%] hover:scale-110 transition-all ease-in-out rounded-[5px] text-center text-black bg-white mt-[10px] shadow-[0px_7px_10px_0px_#00000024]"
