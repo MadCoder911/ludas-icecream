@@ -2,7 +2,7 @@ import { after } from "node:test";
 
 export const setCart = (itemsObject: CartObj, operation: string) => {
   //Get items from storage
-  const itemsArr = JSON.parse(localStorage.getItem("cart"));
+  const itemsArr = JSON.parse(localStorage.getItem("cart")!);
 
   //Check if no items
   if (!itemsArr) {
@@ -48,7 +48,7 @@ export const setCart = (itemsObject: CartObj, operation: string) => {
 };
 
 export const getCart = () => {
-  const items = JSON.parse(localStorage.getItem("cart"));
-  console.log(items, "items");
+  const items = JSON.parse(localStorage.getItem("cart")!);
+
   return items;
 };

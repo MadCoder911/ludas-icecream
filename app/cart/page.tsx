@@ -8,16 +8,25 @@ import { useEffect, useState } from "react";
 
 const page = () => {
   const [currentCart, setCurrentCart] = useState<CartObj[]>([]);
+  const [total, setTotal] = useState(10);
+  const [shipping, setShipping] = useState(60);
   const updateCart = () => {
     const items = getCart();
-
     setCurrentCart(items);
   };
+
   useEffect(() => {
     const items = getCart();
     setCurrentCart(items);
   }, []);
-  console.log(currentCart, "Cart");
+  useEffect(() => {
+    setTotal(
+      currentCart.reduce(
+        (acc: number, item: CartObj) => acc + item.price * item.quantity,
+        0
+      )
+    );
+  }, [currentCart]);
   return (
     <main className="bg-cart min-h-[100vh] flex justify-center ">
       {currentCart.length !== 0 ? (
@@ -93,17 +102,29 @@ const page = () => {
               );
             })}
           </div>
-          <div className="w-[100%] flex justify-end">
+          <div className="w-[100%] flex lg:justify-end justify-center mb-[200px]">
             <div>
-              <div className="box text-white">
-                <div className="flex">
+              <div className="box relative text-white bg-[#ffffff25] rounded-[16px] px-[42px] py-[30px] min-w-[400px]">
+                <div className="flex justify-between w-[100%] text-[18px] pb-[10px]">
                   <p>Price:</p>
-                  <p>100 EGP</p>
+                  <p>{total} EGP</p>
                 </div>
-                <div className="flex">
+                <div className="flex justify-between w-[100%] text-[18px]">
                   <p>Shipping Fee:</p>
-                  <p>100 EGP</p>
+                  <p>{shipping} EGP</p>
                 </div>
+
+                <div className="flex justify-between w-[100%] relative  mt-[30px] text-[25px] font-bold">
+                  <span className="absolute w-[100%]  border-b-[2px] border-[#00000013] top-[-10px]"></span>
+                  <p>Total:</p>
+                  <p>{total + shipping} EGP</p>
+                </div>
+                <Link
+                  href="/checkout"
+                  className={` shadow-[0px_7px_10px_0px_#00000024] flex justify-center absolute bottom-[-90px] left-[50%] translate-x-[-50%] bg-cookies w-[100%] rounded-[8px] text-white font-semibold hover:scale-105 transition-all ease-in-out py-[10px] text-[20px]`}
+                >
+                  Checkout
+                </Link>
               </div>
             </div>
           </div>
