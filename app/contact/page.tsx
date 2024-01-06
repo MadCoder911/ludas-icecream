@@ -102,7 +102,7 @@ const page = () => {
           )}
           <button
             type="button"
-            className="bg-cookie py-2 flex justify-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
+            className="bg-cookies py-2 flex justify-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
             onClick={handleSubmit}
           >
             {loading && <LoadingSpinner style="w-4 h-4 mr-2" />}

@@ -11,8 +11,8 @@ const config: Config = {
       colors: {
         cookies: "#4FBBFB",
         biscuit: "#FDBF79",
-        vanilla: "#F8DA9B",
         brownies: "#996955",
+        vanilla: "#F8DA9B",
       },
     },
   },

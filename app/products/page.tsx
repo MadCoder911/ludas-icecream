@@ -37,7 +37,7 @@ const page = async () => {
               <ProductCard
                 key={i}
                 cart_pic={cart_pic}
-                product_color={`bg-${id}`}
+                product_color={id}
                 product_title={name}
                 product_description={products_page_description}
                 product_id={id}
