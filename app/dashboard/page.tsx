@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 const page = () => {
+  console.log(document.cookie.split(";"));
   useEffect(() => {
     try {
       axios({
