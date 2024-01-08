@@ -2,22 +2,25 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 const page = () => {
   const [loginInfo, setLoginInfo] = useState<{
     username: string;
     password: string;
   }>({ username: "", password: "" });
+  const router = useRouter();
   const login = async () => {
     try {
       const { data } = await axios({
         method: "post",
         url: process.env.API_URL + "/login",
         withCredentials: true,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", credentials: "include" },
         data: JSON.stringify(loginInfo),
       });
-      console.log(data);
 
+      document.cookie = `access_token=${data.token}`;
+      router.push("/dashboard");
       return;
     } catch (error) {}
   };
