@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import axios from "axios";
 const page = () => {
-  console.log(document.cookie.split(";"), "cookies");
   useEffect(() => {
     try {
       axios({
@@ -13,6 +12,7 @@ const page = () => {
         data: JSON.stringify({ email: "x" }),
       });
 
+      console.log(document.cookie.split(";"), "cookies");
       return;
     } catch (error) {}
   }, []);
