@@ -6,6 +6,7 @@ import { PiShoppingCart } from "react-icons/pi";
 import Search from "./Search";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getCart } from "@/utils/setCart";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -32,7 +33,7 @@ const Navbar = () => {
         </ul>
         <div className="flex justify-between">
           {/* <Search /> */}
-          <Link href="/cart">
+          <Link href="/cart" className="relative">
             <PiShoppingCart className="w-[25px] h-[25px] text-white  mx-[10px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
           </Link>
         </div>

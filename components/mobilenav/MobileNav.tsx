@@ -14,7 +14,7 @@ const MobileNav = () => {
 
   const changeBgColor = () => {
     if (pathname.includes("brownies")) {
-      return "bg-brownie";
+      return "bg-brownies";
     } else if (pathname.includes("biscuit")) {
       return "bg-biscuit";
     } else if (pathname.includes("vanilla")) {
@@ -54,20 +54,26 @@ const MobileNav = () => {
           <div className="mx-[20px]">
             <ul className="w-[100%] mt-[20px] flex flex-col items-center gap-[60px] text-white text-[20px]">
               <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-                <Link href="/">Home</Link>
+                <Link href="/" onClick={() => setOpenNav(false)}>
+                  Home
+                </Link>
               </li>
               <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-                <Link href="/products">Shop</Link>
+                <Link href="/products" onClick={() => setOpenNav(false)}>
+                  Shop
+                </Link>
               </li>
               <li className=" cursor-pointer hover:scale-105 transition-all ease-in-out">
-                <Link href="#">Contact</Link>
+                <Link href="/contact" onClick={() => setOpenNav(false)}>
+                  Contact
+                </Link>
               </li>
             </ul>
             <div className="flex w-[100%] items-center justify-center mt-[60px]">
-              <Link href="#">
+              <Link href="#" onClick={() => setOpenNav(false)}>
                 <AiOutlineSearch className="w-[25px] h-[25px] text-white mx-[30px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
               </Link>
-              <Link href="/cart">
+              <Link href="/cart" onClick={() => setOpenNav(false)}>
                 <PiShoppingCart className="w-[25px] h-[25px] text-white  mx-[30px] cursor-pointer hover:scale-110 transition-all ease-in-out" />
               </Link>
             </div>

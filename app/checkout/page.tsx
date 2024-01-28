@@ -116,6 +116,10 @@ const page = () => {
                       <p>{total + shipping} EGP</p>
                     </div>
                     <Link
+                      onClick={(e) => {
+                        e.preventDefault();
+                        console.log(getCart());
+                      }}
                       href="/checkout"
                       className={` shadow-[0px_7px_10px_0px_#00000024] flex justify-center absolute bottom-[-90px] left-[50%] translate-x-[-50%] bg-cookies w-[100%] rounded-[8px] text-white font-semibold hover:scale-105 transition-all ease-in-out py-[10px] text-[20px]`}
                     >
