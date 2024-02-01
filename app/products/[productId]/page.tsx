@@ -1,12 +1,6 @@
 "use client";
 import Image from "next/image";
-import {
-  Item,
-  cookies,
-  brownies,
-  vanilla,
-  biscuit,
-} from "../../../api-mock-data/products";
+
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 import { setCart } from "@/utils/setCart";
