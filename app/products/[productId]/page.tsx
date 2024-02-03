@@ -3,8 +3,9 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
-import { setCart } from "@/utils/setCart";
+import { getCart, setCart } from "@/utils/setCart";
 import Link from "next/link";
+import { toast } from "react-toastify";
 interface PageProps {
   params: {
     productId: string;
@@ -15,7 +16,7 @@ const page = ({ params }: PageProps) => {
   const [data, setData] = useState<FeaturedProduct>();
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState<number>(1);
-
+  const [activeImg, setActiveImg] = useState<string>("");
   useEffect(() => {
     setLoading(true);
     async function getProduct(id: string): Promise<FeaturedProduct> {
@@ -29,11 +30,11 @@ const page = ({ params }: PageProps) => {
           return data;
         });
       setData(product[0]);
+      setActiveImg(product[0].product_page_pics[0]);
 
       return product;
     }
     getProduct(params.productId);
-
     setLoading(false);
   }, []);
 
@@ -52,7 +53,7 @@ const page = ({ params }: PageProps) => {
           <div className="image-selector mr-[50px] flex justify-center items-center w-[100%]">
             <div className="component">
               <Image
-                src={data?.cart_pic}
+                src={activeImg}
                 alt={data?.id}
                 width={475.32}
                 height={513}
@@ -62,12 +63,13 @@ const page = ({ params }: PageProps) => {
                 {data?.product_page_pics.map((pic, i) => {
                   return (
                     <Image
+                      onClick={() => setActiveImg(pic)}
                       key={i}
                       src={pic}
                       alt={data?.id}
                       width={475.32}
                       height={513}
-                      className="lg:min-w-[110px] max-w-[80px] max-h-[90px] lg:min-h-[119px]"
+                      className="lg:min-w-[110px] max-w-[80px] max-h-[90px] lg:min-h-[119px] cursor-pointer"
                     />
                   );
                 })}
@@ -111,18 +113,36 @@ const page = ({ params }: PageProps) => {
             </div>
             <div className="flex flex-col gap-[20px] ">
               <button
-                onClick={() =>
-                  setCart(
-                    {
-                      name: data.name,
-                      id: data.id,
-                      price: data.price_after,
-                      picture: data.cart_pic,
-                      quantity: quantity,
-                    },
-                    "new"
-                  )
-                }
+                onClick={() => {
+                  toast.success("Product added to cart");
+
+                  const item = getCart().find(
+                    (item: CartObj) => item.name === data?.name
+                  );
+                  if (!item || item === undefined) {
+                    setCart(
+                      {
+                        name: data.name,
+                        id: data.id,
+                        price: data.price_after,
+                        picture: data.cart_pic,
+                        quantity: quantity,
+                      },
+                      "new"
+                    );
+                  } else {
+                    setCart(
+                      {
+                        name: data.name,
+                        id: data.id,
+                        price: data.price_after,
+                        picture: data.cart_pic,
+                        quantity: quantity,
+                      },
+                      "inc"
+                    );
+                  }
+                }}
                 className={` shadow-[0px_7px_10px_0px_#00000024] ${`bg-${data?.id}`} w-[100%] lg:w-[50%] rounded-[8px] text-white font-medium hover:scale-105 transition-all ease-in-out py-[10px] text-[17px]`}
               >
                 Add to Cart

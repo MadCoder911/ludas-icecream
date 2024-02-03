@@ -44,7 +44,7 @@ const Email = () => {
         <h1 className="text-white font-semibold text-[18px] md:text-[28px]">
           Be the first to know about our latest flavors !
         </h1>
-        <div className="flex flex-col md:flex-row max-w-[100%] justify-between items-center mt-2">
+        <div className="flex flex-col md:flex-row max-w-[100%] justify-between relative items-center mt-2">
           <input
             type="text"
             name="email"
@@ -62,11 +62,17 @@ const Email = () => {
             {loading && <LoadingSpinner style="w-4 h-4 mr-2" />}
             Subscribe{" "}
           </button>
+          {error && (
+            <p className="mt-2 text-red-700 font-medium absolute bottom-[-30px]">
+              {error}
+            </p>
+          )}
+          {success && (
+            <p className="mt-2  text-green-700 font-medium absolute md:bottom-[-30px] bottom-[-50px]">
+              {success}
+            </p>
+          )}
         </div>
-        {error && <p className="mt-2 text-red-700 font-medium">{error}</p>}
-        {success && (
-          <p className="mt-2  text-green-700 font-medium">{success}</p>
-        )}
       </div>
     </div>
   );

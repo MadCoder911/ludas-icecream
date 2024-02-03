@@ -1,7 +1,7 @@
 "use client";
 
 import { setCart } from "@/utils/setCart";
-
+import { toast } from "react-toastify";
 const AddToCart = ({
   product_color,
   product_id,
@@ -21,7 +21,8 @@ const AddToCart = ({
   console.log(product_color);
   return (
     <button
-      onClick={() =>
+      onClick={() => {
+        toast.success("Product added to cart");
         setCart(
           {
             name: product_name,
@@ -31,8 +32,8 @@ const AddToCart = ({
             quantity: 1,
           },
           ""
-        )
-      }
+        );
+      }}
       className={` w-[100%]  hover:scale-110 transition-all ease-in-out rounded-[5px] text-center  text-white  shadow-[0px_7px_10px_0px_#00000024 ${product_color}`}
     >
       Add to Cart

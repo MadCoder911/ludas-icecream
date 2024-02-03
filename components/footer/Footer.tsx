@@ -73,24 +73,28 @@ const Footer = () => {
               <p className="mb-[10px]">
                 Be the first to know about our latest flavors !
               </p>
-              <div className="relative w-[100%] mb-[10px]">
+              <div className="relative w-[100%] mb-[30px]">
                 <input
                   type="text"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="px-2 py-1 w-[100%] rounded-[5px] hover:outline-none focus:outline-none text-black"
+                  className="px-2 py-1 w-[100%] rounded-[5px] hover:outline-none focus:outline-none text-black relative"
                 />
                 <button onClick={handleClick}>
                   <SlArrowRight className="absolute  text-black top-[50%] translate-y-[-50%] right-[10px] w-[20px] h-[20px]" />
                 </button>
+                {error && (
+                  <p className="mt-2 text-red-700 font-medium absolute bottom-[-25px]">
+                    {error}
+                  </p>
+                )}
+                {success && (
+                  <p className="mt-2  text-green-700 font-medium asbsolute bottom-[-25px]">
+                    {success}
+                  </p>
+                )}
               </div>
-              {error && (
-                <p className="mt-2 text-red-700 font-medium">{error}</p>
-              )}
-              {success && (
-                <p className="mt-2  text-green-700 font-medium">{success}</p>
-              )}
               <p>We don’t spam, we send offers instead !</p>
             </div>
           </div>

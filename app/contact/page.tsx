@@ -31,8 +31,8 @@ const page = () => {
       setError(true);
       setSuccess(false);
       return setTimeout(() => {
-        setError(true);
-      }, 5000);
+        setError(false);
+      }, 3000);
     } else {
       try {
         fetch(`${process.env.API_URL}/messages`, {
@@ -61,7 +61,7 @@ const page = () => {
           Contact Us
           <span className="absolute w-[100%]  border-b-[2px] border-[#00000013] bottom-[-20px]"></span>
         </h1>
-        <form className="flex flex-col gap-[20px] flex-wrap justify-center md:justify-start mb-[80px] ">
+        <form className="flex flex-col gap-[20px] flex-wrap relative justify-center md:justify-start mb-[80px] ">
           <input
             type="text"
             name="name"
@@ -91,18 +91,18 @@ const page = () => {
             onChange={(e) => handleChange(e.target.name, e.target.value)}
           ></textarea>
           {error && (
-            <p className="text-red-700">
+            <p className="text-red-700 absolute bottom-[45px]">
               Please fill all the input fields correctly !
             </p>
           )}
           {success && (
-            <p className="text-green-700">
+            <p className="text-green-700 absolute bottom-[45px]">
               Your message has been recieved, we will contact you shortly.
             </p>
           )}
           <button
             type="button"
-            className="bg-cookies py-2 flex justify-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
+            className="bg-cookies py-2 flex justify-center text-white font-medium rounded-[5px] mt-[20px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
             onClick={handleSubmit}
           >
             {loading && <LoadingSpinner style="w-4 h-4 mr-2" />}
