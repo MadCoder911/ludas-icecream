@@ -20,12 +20,14 @@ const page = () => {
     setCurrentCart(items);
   }, []);
   useEffect(() => {
-    setTotal(
-      currentCart.reduce(
-        (acc: number, item: CartObj) => acc + item.price * item.quantity,
-        0
-      )
-    );
+    if (currentCart) {
+      setTotal(
+        currentCart.reduce(
+          (acc: number, item: CartObj) => acc + item.price * item.quantity,
+          0
+        )
+      );
+    }
   }, [currentCart]);
   if (!currentCart || currentCart.length === 0) {
     return (

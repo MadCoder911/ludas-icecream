@@ -1,12 +1,15 @@
 "use client";
 import "./checkout.css";
 import Image from "next/image";
-import { clearCart, getCart } from "@/utils/setCart";
+import { getCart, clearCart } from "@/utils/setCart";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { orderValidation } from "@/utils/validation";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 const page = () => {
+  const router = useRouter();
   const [currentCart, setCurrentCart] = useState<CartObj[]>([]);
   const [total, setTotal] = useState(10);
   const [shipping, setShipping] = useState(60);
@@ -20,7 +23,7 @@ const page = () => {
     governrate: "",
     postal_code: "",
     phone: "",
-    order: getCart(),
+    order: [{ name: "s", id: "", price: "", picture: "", quantity: "" }],
   });
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -34,17 +37,21 @@ const page = () => {
     setCurrentCart(items);
   }, []);
   useEffect(() => {
-    setTotal(
-      currentCart.reduce(
-        (acc: number, item: CartObj) => acc + item.price * item.quantity,
-        0
-      )
-    );
+    if (currentCart) {
+      setTotal(
+        currentCart.reduce(
+          (acc: number, item: CartObj) => acc + item.price * item.quantity,
+          0
+        )
+      );
+      setOrderInfo({ ...orderInfo, order: getCart() });
+    }
   }, [currentCart]);
   //
 
   const handleClick = async () => {
     setLoading(true);
+    console.log(orderInfo);
     if (orderValidation(orderInfo) !== true) {
       setLoading(false);
       toast.error(orderValidation(orderInfo));
@@ -72,6 +79,9 @@ const page = () => {
         });
         setLoading(false);
         clearCart();
+        setTimeout(() => {
+          router.push("/");
+        }, 1500);
       } catch (error) {
         toast.error("An error has occured");
       }
@@ -240,8 +250,11 @@ const page = () => {
                           handleClick();
                         }}
                         href="/checkout"
-                        className={` shadow-[0px_7px_10px_0px_#00000024] flex justify-center absolute bottom-[-90px] left-[50%] translate-x-[-50%] bg-cookies w-[100%] rounded-[8px] text-white font-semibold hover:scale-105 transition-all ease-in-out py-[10px] text-[20px]`}
+                        className={` shadow-[0px_7px_10px_0px_#00000024] flex justify-center items-center absolute bottom-[-90px] left-[50%] translate-x-[-50%] bg-cookies w-[100%] rounded-[8px] text-white font-semibold hover:scale-105 transition-all ease-in-out py-[10px] text-[20px]`}
                       >
+                        {loading && (
+                          <LoadingSpinner style="w-[17px] mr-[8px]" />
+                        )}{" "}
                         Place Order
                       </Link>
                     </div>

@@ -102,11 +102,12 @@ const Footer = () => {
             <Link
               href="https://www.tiktok.com/@ludas_icecream"
               target="_blank"
-              className="mr-[15px]"
+              className="mr-[15px] no-underline"
             >
               <FaTiktok className="w-[20px]  h-[25px]" />
             </Link>
             <Link
+              className="no-underline"
               href="https://www.instagram.com/ludas_icecream/"
               target="_blank"
             >

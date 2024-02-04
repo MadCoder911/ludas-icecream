@@ -1,5 +1,3 @@
-import { after } from "node:test";
-
 export const setCart = (itemsObject: CartObj, operation: string) => {
   //Get items from storage
   const itemsArr = JSON.parse(localStorage.getItem("cart")!);
@@ -52,6 +50,7 @@ export const getCart = () => {
 
   return items;
 };
+
 export const clearCart = () => {
-  return localStorage.setItem("cart", JSON.stringify([]));
+  return localStorage.removeItem("cart");
 };
