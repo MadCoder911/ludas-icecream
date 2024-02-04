@@ -44,11 +44,11 @@ interface OrderObj {
   first_name: string;
   last_name: string;
   address: string;
-  apartment: string;
+  apartment: number | string;
   city: string;
   governrate: string;
-  postal_code: string;
-  phone: string;
+  postal_code: number | string;
+  phone: number | string;
   order: [
     {
       name: string;

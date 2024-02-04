@@ -18,11 +18,11 @@ const page = () => {
     first_name: "",
     last_name: "",
     address: "",
-    apartment: "",
+    apartment: 0,
     city: "",
     governrate: "",
-    postal_code: "",
-    phone: "",
+    postal_code: 0,
+    phone: 0,
     order: [{ name: "s", id: "", price: "", picture: "", quantity: "" }],
   });
   const [loading, setLoading] = useState<boolean>(false);
@@ -169,13 +169,13 @@ const page = () => {
                   </div>
                   <div className="flex justify-between mb-[20px]">
                     <input
-                      type="name"
+                      type="number"
                       placeholder="Apartment No"
-                      value={orderInfo.apartment}
+                      value={orderInfo.apartment || "Apartment No"}
                       onChange={(e) =>
                         setOrderInfo({
                           ...orderInfo,
-                          apartment: e.target.value,
+                          apartment: Number(e.target.value),
                         })
                       }
                       className="rounded-[8px] px-4 py-4 w-[100%] outline-none"
@@ -204,13 +204,13 @@ const page = () => {
                       className="rounded-[8px] px-4 py-4 w-[100%] outline-none"
                     />
                     <input
-                      type="email"
+                      type="number"
                       placeholder="Postal Code"
-                      value={orderInfo.postal_code}
+                      value={orderInfo.postal_code || "Postal Code"}
                       onChange={(e) =>
                         setOrderInfo({
                           ...orderInfo,
-                          postal_code: e.target.value,
+                          postal_code: Number(e.target.value),
                         })
                       }
                       className="rounded-[8px] px-4 py-4 w-[100%] outline-none"
@@ -218,11 +218,14 @@ const page = () => {
                   </div>
                   <div className="flex justify-between mb-[20px]">
                     <input
-                      type="email"
+                      type="number"
                       placeholder="Phone"
-                      value={orderInfo.phone}
+                      value={orderInfo.phone || "Phone"}
                       onChange={(e) =>
-                        setOrderInfo({ ...orderInfo, phone: e.target.value })
+                        setOrderInfo({
+                          ...orderInfo,
+                          phone: e.target.value,
+                        })
                       }
                       className="rounded-[8px] px-4 py-4 w-[100%] outline-none"
                     />
