@@ -49,11 +49,11 @@ const Footer = () => {
           <div className="flex justify-between flex-wrap  lg:flex-nowrap mt-[100px] gap-[20px] lg:gap-[60px] mb-[100px] text-white">
             <div className="flex flex-col basis-[100%] items-center lg:items-start font-thin">
               <h1 className="text-[25px] font-semibold mb-[20px]">Contact</h1>
-              <div className="flex items-center ">
+              <div className="flex items-center no-underline">
                 <LiaPhoneSolid className="w-[24px] h-[24px] mr-[8px]" /> +20
                 1140808862
               </div>
-              <div className="flex items-center mt-[15px] ">
+              <div className="flex items-center mt-[15px] no-underline ">
                 <SlEnvolope className="w-[24px] h-[24px] mr-[8px]" />
                 Ludas@icecream.com
               </div>
