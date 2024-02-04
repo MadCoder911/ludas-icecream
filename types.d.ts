@@ -38,3 +38,24 @@ interface CartObj {
   price: number;
   quantity: number;
 }
+
+interface OrderObj {
+  email: string;
+  first_name: string;
+  last_name: string;
+  address: string;
+  apartment: string;
+  city: string;
+  governrate: string;
+  postal_code: string;
+  phone: string;
+  order: [
+    {
+      name: string;
+      id: string;
+      price: string;
+      picture: string;
+      quantity: string;
+    }
+  ];
+}

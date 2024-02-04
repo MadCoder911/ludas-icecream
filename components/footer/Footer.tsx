@@ -99,10 +99,17 @@ const Footer = () => {
             </div>
           </div>
           <div className="absolute bottom-[50px] left-[50%] translate-x-[-50%] lg:left-0 lg:translate-x-0 flex text-white">
-            <Link href="#" className="mr-[10px]">
+            <Link
+              href="https://www.tiktok.com/@ludas_icecream"
+              target="_blank"
+              className="mr-[15px]"
+            >
               <FaTiktok className="w-[20px]  h-[25px]" />
             </Link>
-            <Link href="#">
+            <Link
+              href="https://www.instagram.com/ludas_icecream/"
+              target="_blank"
+            >
               <FaInstagram className="w-[20px] h-[25px]" />
             </Link>
           </div>

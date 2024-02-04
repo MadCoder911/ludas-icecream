@@ -27,9 +27,25 @@ const page = () => {
       )
     );
   }, [currentCart]);
-  return (
-    <main className="bg-cart min-h-[100vh] flex justify-center ">
-      {currentCart.length !== 0 ? (
+  if (!currentCart || currentCart.length === 0) {
+    return (
+      <main className="bg-cart min-h-[100vh] flex justify-center ">
+        <div className="w-[100%] flex flex-col items-center my-[300px]">
+          <h1 className="text-white font-semibold text-[40px]">
+            Your Cart Is Empty
+          </h1>
+          <Link
+            href={"/products"}
+            className="bg-cookies  text-white text-[20px font-medium px-2 py-1 rounded-[6px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-110 transition-all ease-in-out"
+          >
+            Browse Our Products
+          </Link>
+        </div>
+      </main>
+    );
+  } else
+    return (
+      <main className="bg-cart min-h-[100vh] flex justify-center ">
         <div className="container ">
           <h1 className="text-white  font-semibold relative w-[100%] mb-[50px] my-[120px] text-[30px] flex justify-center md:justify-start">
             Your Cart
@@ -129,20 +145,7 @@ const page = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <div className="w-[100%] flex flex-col items-center my-[300px]">
-          <h1 className="text-white font-semibold text-[40px]">
-            Your Cart Is Empty
-          </h1>
-          <Link
-            href={"/products"}
-            className="bg-cookies  text-white text-[20px font-medium px-2 py-1 rounded-[6px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-110 transition-all ease-in-out"
-          >
-            Browse Our Products
-          </Link>
-        </div>
-      )}
-    </main>
-  );
+      </main>
+    );
 };
 export default page;

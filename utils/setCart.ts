@@ -52,3 +52,6 @@ export const getCart = () => {
 
   return items;
 };
+export const clearCart = () => {
+  return localStorage.setItem("cart", JSON.stringify([]));
+};

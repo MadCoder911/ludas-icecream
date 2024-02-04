@@ -49,9 +49,7 @@ const page = () => {
         return setTimeout(() => {
           setSuccess(false);
         }, 5000);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
     }
   };
   return (
