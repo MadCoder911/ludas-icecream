@@ -43,11 +43,13 @@ const page = ({ params }: PageProps) => {
   };
   return (
     <div
-      className="min-h-[100vh] flex justify-center relative  lg:items-start bg-cover bg-no-repeat"
+      className="min-h-[100vh] flex justify-center  relative  lg:items-start bg-cover bg-no-repeat"
       style={sectionStyle}
     >
       {loading || !data ? (
-        <LoadingSpinner style="w-[50px] h-[50px] absolute top-[50%] " />
+        <div className="w-[100%] h-[100vh] flex items-center justify-center">
+          <LoadingSpinner style="w-[50px] h-[50px]" />
+        </div>
       ) : (
         <div className="container w-[100%] my-[150px]  flex justify-between   flex-wrap lg:flex-nowrap ">
           <div className="image-selector mr-[50px] flex justify-center items-center w-[100%]">
