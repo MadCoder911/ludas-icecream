@@ -3,3 +3,8 @@
   background-position: center;
   background-size: cover;
 }
+@media (max-width: 900px) {
+  .backgroundSetting {
+    background-image: url(../../assets/mobileHero.png);
+  }
+}
