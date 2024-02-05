@@ -10,9 +10,9 @@ const page = () => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<{
     name: string;
-    contact_method: string;
+    contact_method: number;
     message: string;
-  }>({ name: "", contact_method: "", message: "" });
+  }>({ name: "", contact_method: 0, message: "" });
   //handle change
   const handleChange = (item: string, value: string) => {
     setFormData({ ...formData, [item]: value });
@@ -25,7 +25,8 @@ const page = () => {
       !formData.name ||
       typeof formData.name !== "string" ||
       !formData.contact_method ||
-      !formData.message
+      !formData.message ||
+      String(formData.contact_method).length !== 11
     ) {
       setLoading(false);
       setError(true);
@@ -44,7 +45,7 @@ const page = () => {
         });
         setError(false);
         setSuccess(true);
-        setFormData({ name: "", contact_method: "", message: "" });
+        setFormData({ name: "", contact_method: 0, message: "" });
         setLoading(false);
         return setTimeout(() => {
           setSuccess(false);
@@ -70,13 +71,13 @@ const page = () => {
             onChange={(e) => handleChange(e.target.name, e.target.value)}
           />
           <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email / Phone"
+            type="Number"
+            placeholder="Phone Number"
             className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none"
-            value={formData.contact_method}
-            onChange={(e) => handleChange("contact_method", e.target.value)}
+            value={formData.contact_method || ""}
+            onChange={(e) => {
+              handleChange("contact_method", e.target.value);
+            }}
           />
           <textarea
             name="message"

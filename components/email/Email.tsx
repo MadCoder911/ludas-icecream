@@ -10,9 +10,10 @@ const Email = () => {
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<string>();
   const handleClick = async () => {
+    const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     console.log(`${process.env.API_URL}/subscribtion`);
     setLoading(true);
-    if (!email || email.includes(".com") === false) {
+    if (!email || email.includes(".com") === false || !emailRegex.test(email)) {
       setLoading(false);
       setError("Please insert a correct email !");
       return setTimeout(() => {
@@ -27,6 +28,7 @@ const Email = () => {
           },
           body: JSON.stringify({ email: email }),
         });
+        setError("");
         setSuccess("You have been subscribed to our email list");
         setEmail("");
         setLoading(false);

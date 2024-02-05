@@ -14,9 +14,11 @@ const Footer = () => {
   const [error, setError] = useState<string>();
   const [success, setSuccess] = useState<string>();
   const pathname = usePathname();
+
   const handleClick = async () => {
+    const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     console.log(JSON.stringify({ email: email }));
-    if (!email || email.includes(".com") === false) {
+    if (!email || email.includes(".com") === false || !emailRegex.test(email)) {
       setError("Please insert a correct email !");
       return setTimeout(() => {
         setError("");
@@ -30,6 +32,7 @@ const Footer = () => {
           },
           body: JSON.stringify({ email: email }),
         });
+        setError("");
         setSuccess("You have been subscribed to our email list");
         setEmail("");
         return setTimeout(() => {
@@ -50,12 +53,12 @@ const Footer = () => {
             <div className="flex flex-col basis-[100%] items-center lg:items-start font-thin">
               <h1 className="text-[25px] font-semibold mb-[20px]">Contact</h1>
               <div className="flex items-center no-underline">
-                <LiaPhoneSolid className="w-[24px] h-[24px] mr-[8px]" /> +20
-                1140808862
+                <LiaPhoneSolid className="w-[24px] h-[24px] mr-[8px] no-underline" />{" "}
+                <span className="no-underline">+20 1140808862</span>
               </div>
               <div className="flex items-center mt-[15px] no-underline ">
                 <SlEnvolope className="w-[24px] h-[24px] mr-[8px]" />
-                Ludas@icecream.com
+                <span className="no-underline">Ludas@icecream.com</span>
               </div>
             </div>
             <div className="flex flex-col  items-center mt-[20px] lg:mt-[0px] font-thin">
@@ -73,7 +76,7 @@ const Footer = () => {
               <p className="mb-[10px]">
                 Be the first to know about our latest flavors !
               </p>
-              <div className="relative w-[100%] mb-[30px]">
+              <div className="relative w-[100%] mb-[10px]">
                 <input
                   type="text"
                   placeholder="Email"
@@ -81,16 +84,21 @@ const Footer = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="px-2 py-1 w-[100%] rounded-[5px] hover:outline-none focus:outline-none text-black relative"
                 />
-                <button onClick={handleClick}>
-                  <SlArrowRight className="absolute  text-black top-[50%] translate-y-[-50%] right-[10px] w-[20px] h-[20px]" />
+                <button
+                  onClick={handleClick}
+                  className="absolute  text-black top-[50%] translate-y-[-50%] right-[10px] w-[20px] h-[20px]"
+                >
+                  <SlArrowRight />
                 </button>
+              </div>
+              <div className="h-fit">
                 {error && (
-                  <p className="mt-2 text-red-700 font-medium absolute bottom-[-25px]">
+                  <p className=" text-red-700 font-medium  bottom-[-25px]">
                     {error}
                   </p>
                 )}
                 {success && (
-                  <p className="mt-2  text-green-700 font-medium asbsolute bottom-[-25px]">
+                  <p className="  text-green-700 font-medium  bottom-[-25px]">
                     {success}
                   </p>
                 )}
