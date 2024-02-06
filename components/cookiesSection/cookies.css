@@ -22,3 +22,9 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.bg-Strawberry {
+  background-image: url(../../assets/strawberry/strawberry_bg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

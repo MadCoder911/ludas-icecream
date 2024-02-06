@@ -30,7 +30,7 @@ const CookiesSection = ({
         id === "cookies" && "bg-cookie"
       } ${id === "brownies" && "bg-Brownies"} ${
         id === "biscuit" && "bg-Biscuit"
-      } ${id === "vanilla" && "bg-Vanilla"}`}
+      } ${id === "vanilla" && "bg-Vanilla"} ${id === "strawberry" && "bg-Strawberry"}`}
     >
       <Image
         src={title}
