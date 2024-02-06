@@ -20,6 +20,7 @@ const page = ({ params }: PageProps) => {
   useEffect(() => {
     setLoading(true);
     async function getProduct(id: string): Promise<FeaturedProduct> {
+      console.log(`${process.env.API_URL}/products?id=${id}`);
       const product = await fetch(`${process.env.API_URL}/products?id=${id}`, {
         next: { revalidate: 1000 },
       })
@@ -92,6 +93,31 @@ const page = ({ params }: PageProps) => {
                 </p>
               );
             })}
+            <div className="text-white">
+              <h1 className="font-semibold text-[19px] mb-[10px]">
+                Nutrition facts
+              </h1>
+              <p>
+                <span className="font-bold">
+                  {data.nutrition_facts.protein}g
+                </span>{" "}
+                <span className="font-semibold">protein</span>
+              </p>
+              <p>
+                <span className="font-bold">{data.nutrition_facts.carb}g</span>{" "}
+                <span className="font-semibold">carbs</span>
+              </p>
+              <p>
+                <span className="font-bold">{data.nutrition_facts.fats}g</span>{" "}
+                <span className="font-semibold">fat</span>
+              </p>
+              <p>
+                <span className="font-bold">
+                  {data.nutrition_facts.calories}
+                </span>{" "}
+                <span className="font-semibold">calories</span>
+              </p>
+            </div>
             <p className="text-[20px] text-white mt-[50px]">Price</p>
             <p className="text-white text-[20px] font-semibold mb-[20px]">
               {data?.price_after} EGP
