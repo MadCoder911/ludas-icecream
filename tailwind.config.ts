@@ -13,6 +13,7 @@ const config: Config = {
         biscuit: "#FDBF79",
         brownies: "#996955",
         vanilla: "#F8DA9B",
+        strawberry: "#ef6064",
       },
     },
   },
