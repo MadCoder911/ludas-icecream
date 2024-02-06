@@ -30,7 +30,9 @@ const CookiesSection = ({
         id === "cookies" && "bg-cookie"
       } ${id === "brownies" && "bg-Brownies"} ${
         id === "biscuit" && "bg-Biscuit"
-      } ${id === "vanilla" && "bg-Vanilla"} ${id === "strawberry" && "bg-Strawberry"}`}
+      } ${id === "vanilla" && "bg-Vanilla"} ${
+        id === "strawberry" && "bg-Strawberry"
+      }`}
     >
       <Image
         src={title}
@@ -61,7 +63,10 @@ const CookiesSection = ({
           </p>
           <div className="flex font-[600] text-[17px]">
             <p>{price_after} EGP</p>
-            <p className="decoration-dashed ml-[10px]">{price_before} EGP</p>
+            <p className="decoration-dashed ml-[10px] relative">
+              <span className="absolute w-[100%] h-[1px] top-[50%] bg-white"></span>
+              {price_before} EGP
+            </p>
           </div>
           <Link
             href={`/products/${id}`}
