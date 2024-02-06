@@ -15,6 +15,8 @@ const MobileNav = () => {
   const changeBgColor = () => {
     if (pathname.includes("brownies")) {
       return "bg-brownies";
+    } else if (pathname.includes("strawberry")) {
+      return "bg-strawberry";
     } else if (pathname.includes("biscuit")) {
       return "bg-biscuit";
     } else if (pathname.includes("vanilla")) {

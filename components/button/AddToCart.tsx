@@ -18,7 +18,7 @@ const AddToCart = ({
   const buttonStyle = {
     backgroundColor: `${product_color}`,
   };
-  console.log(product_color);
+
   return (
     <button
       onClick={() => {
@@ -34,7 +34,8 @@ const AddToCart = ({
           ""
         );
       }}
-      className={` w-[100%]  hover:scale-110 transition-all ease-in-out rounded-[5px] text-center  text-white  shadow-[0px_7px_10px_0px_#00000024 ${product_color}`}
+      style={buttonStyle}
+      className={` w-[100%]  hover:scale-110 transition-all ease-in-out rounded-[5px] text-center  text-white  shadow-[0px_7px_10px_0px_#00000024 ${`bg-${product_color}`}`}
     >
       Add to Cart
     </button>
