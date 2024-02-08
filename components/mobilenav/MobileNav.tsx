@@ -23,7 +23,7 @@ const MobileNav = () => {
       return "bg-vanilla";
     } else return "bg-[#33a1d8]";
   };
-  if (pathname == "/login" || pathname === "/dashboard") {
+  if (pathname == "/login" || pathname.includes("dashboard")) {
     return;
   } else {
     return (

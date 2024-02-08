@@ -1,10 +1,10 @@
 import Layout from "../Layout";
 
-const Orders = () => {
+const Sales = () => {
   return (
     <Layout>
-      <p>Orders</p>
+      <div>Sales</div>
     </Layout>
   );
 };
-export default Orders;
+export default Sales;

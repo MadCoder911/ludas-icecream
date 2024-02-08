@@ -10,7 +10,7 @@ import { getCart } from "@/utils/setCart";
 
 const Navbar = () => {
   const pathname = usePathname();
-  if (pathname == "/login" || pathname === "/dashboard") {
+  if (pathname == "/login" || pathname.includes("dashboard")) {
     return;
   } else {
     return (
