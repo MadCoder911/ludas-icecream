@@ -43,7 +43,7 @@ const Footer = () => {
       }
     }
   };
-  if (pathname == "/login" || pathname == "/dashboard") {
+  if (pathname == "/login" || pathname.includes("/dashboard")) {
     return;
   } else {
     return (
