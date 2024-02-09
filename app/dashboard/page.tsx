@@ -8,20 +8,23 @@ import Sales from "@/components/dashboard/sales/Sales";
 import Messages from "@/components/dashboard/messages/Messages";
 import Accounts from "@/components/dashboard/accounts/Accounts";
 import Expenses from "@/components/dashboard/expenses/Expenses";
+import { useRouter } from "next/navigation";
 
 const page = () => {
   const [activeTab, setActiveTab] = useState<string>("orders");
+  const router = useRouter();
   useEffect(() => {
     try {
       axios({
         method: "get",
-        url: process.env.API_URL + "/subscription",
+        url: process.env.API_URL + "/orders",
         withCredentials: true,
         headers: { "Content-Type": "application/json", credentials: "include" },
-        data: JSON.stringify({ email: "x" }),
       });
       return;
-    } catch (error) {}
+    } catch (error) {
+      router.push("/login");
+    }
   }, []);
   return (
     <div className="flex">

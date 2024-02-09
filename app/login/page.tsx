@@ -9,6 +9,7 @@ const page = () => {
     password: string;
   }>({ username: "", password: "" });
   const router = useRouter();
+  // console.log(document.cookie);
   const login = async () => {
     try {
       const { data } = await axios({

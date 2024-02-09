@@ -58,4 +58,5 @@ interface OrderObj {
       quantity: string;
     }
   ];
+  status?: string;
 }
