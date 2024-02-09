@@ -68,37 +68,33 @@ const Orders = () => {
             </button>
           </div>
           <div className="bg-white rounded-[5px] p-[20px] shadow-[0px_4px_10px_3px_#00000032] mt-[40px]">
-            <div className="title flex  gap-[80px] w-[100%]">
-              <p className=" flex justify-start w-[75px]">Customer</p>
-              <p className=" flex justify-start w-[75px]">Phone</p>
-              <p className=" flex justify-start w-[75px]">Date</p>
-              <p className=" flex justify-start w-[75px]">Price</p>
-              <p className=" flex justify-start w-[75px]">Payment Method</p>
-              <p className=" flex justify-start w-[75px]">Status</p>
+            <div className="flex  gap-[0px] w-[100%]">
+              <p className="flex justify-start w-[calc(100%/6)]">Customer</p>
+              <p className="flex justify-start w-[calc(100%/6)]">Phone</p>
+              <p className="flex justify-start w-[calc(100%/6)]">Date</p>
+              <p className="flex justify-start w-[calc(100%/6)]">Price</p>
+              <p className="flex justify-start w-[calc(100%/6)]">Status</p>
             </div>
             <div className="flex flex-col gap-[30px] mt-[30px] max-h-[calc(100vh-370px)] overflow-scroll">
               {orders?.map((order: OrderObj) => {
                 return (
-                  <div className="flex gap-[80px]  w-[100%]">
-                    <p className="font-bold  flex justify-start w-[75px]">
+                  <div className="flex gap-[0px]  w-[100%]">
+                    <p className="font-bold  flex justify-start w-[calc(100%/6)]">
                       {order.first_name}
                     </p>
-                    <p className="font-bold  flex justify-start w-[75px]">
+                    <p className="font-bold  flex justify-start w-[calc(100%/6)]">
                       {order.phone}
                     </p>
-                    <p className="font-bold  flex justify-start w-[75px]">
+                    <p className="font-bold  flex justify-start w-[calc(100%/6)]">
                       9/10 @ 10:55
                     </p>
-                    <p className="font-bold  flex justify-start w-[75px]">
+                    <p className="font-bold  flex justify-start w-[calc(100%/6)]">
                       90 LE
                     </p>
-                    <p className="font-bold  flex justify-start w-[75px]">
-                      Cash
-                    </p>
-                    <p className="font-bold  flex justify-start w-[75px]">
+                    <p className="font-bold  flex justify-start w-[calc(100%/6)]">
                       {order.status}
                     </p>
-                    <button className="bg-black text-white  px-[20px] py-[5px] rounded-[3px] h-fit">
+                    <button className="bg-black text-white shadow-[0px_2px_10px_0px_#0000007d]  px-[20px] py-[5px] rounded-[3px] h-fit hover:bg-white hover:text-black transition-all ease-in-out">
                       Actions
                     </button>
                   </div>
