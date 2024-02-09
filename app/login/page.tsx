@@ -3,6 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 const page = () => {
   const [loginInfo, setLoginInfo] = useState<{
     username: string;
@@ -21,9 +22,14 @@ const page = () => {
       });
 
       document.cookie = `access_token=${data.token}`;
+      toast.success("You have been logged in.");
+
       router.push("/dashboard");
+
       return;
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Incorrect username or password.");
+    }
   };
   return (
     <div className="bg-cookies  h-[100vh]  p-4 flex justify-center">
