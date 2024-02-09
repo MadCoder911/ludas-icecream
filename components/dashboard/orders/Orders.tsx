@@ -9,11 +9,14 @@ import { useRouter } from "next/navigation";
 import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 const Orders = () => {
   const [orders, setOrders] = useState<[OrderObj]>();
+  const [filteredOrders, setFilteredOrders] = useState<[OrderObj]>();
   const [loading, setLoading] = useState(false);
+  const [statusFilter, setStatusFilter] = useState<string>("pending");
   const router = useRouter();
   useEffect(() => {
     setLoading(true);
     const token = Cookies.get("access_token");
+    console.log(token);
     axios({
       method: "get",
       url: process.env.API_URL + "/orders",
@@ -36,6 +39,14 @@ const Orders = () => {
         }
       });
   }, []);
+  useEffect(() => {
+    // if (statusFilter === "all") {
+    //   setFilteredOrders(orders);
+    // } else {
+    const filteredStatus = orders?.filter((item) => item.status === "pending");
+    console.log(filteredStatus, "x");
+    // }
+  }, [statusFilter]);
   if (loading) {
     <Layout>
       <LoadingSpinner style="w-[200px] h-[200px]" />
@@ -51,19 +62,34 @@ const Orders = () => {
             </p>
           </div>
           <div className="flex  gap-[80px] w-[100%] mt-[35px]">
-            <button className="font-bold  hover:scale-110 transition-all ease-in-out ">
+            <button
+              className="font-bold  hover:scale-110 transition-all ease-in-out "
+              onClick={() => setStatusFilter("all")}
+            >
               All Orders
             </button>
-            <button className="  hover:scale-110 transition-all ease-in-out ">
+            <button
+              className="  hover:scale-110 transition-all ease-in-out "
+              onClick={() => setStatusFilter("pending")}
+            >
               Pending
             </button>
-            <button className="  hover:scale-110 transition-all ease-in-out ">
+            <button
+              className="  hover:scale-110 transition-all ease-in-out "
+              onClick={() => setStatusFilter("processing")}
+            >
               Processing
             </button>
-            <button className="  hover:scale-110 transition-all ease-in-out ">
+            <button
+              className="  hover:scale-110 transition-all ease-in-out "
+              onClick={() => setStatusFilter("shipping")}
+            >
               Shipping
             </button>
-            <button className="  hover:scale-110 transition-all ease-in-out ">
+            <button
+              className="  hover:scale-110 transition-all ease-in-out "
+              onClick={() => setStatusFilter("completed")}
+            >
               Completed
             </button>
           </div>
@@ -77,6 +103,11 @@ const Orders = () => {
             </div>
             <div className="flex flex-col gap-[30px] mt-[30px] max-h-[calc(100vh-370px)] overflow-scroll">
               {orders?.map((order: OrderObj) => {
+                const total = order.order.reduce(
+                  (acc: number, item: any) => acc + item.price * item.quantity,
+                  0
+                );
+
                 return (
                   <div className="flex gap-[0px]  w-[100%]">
                     <p className="font-bold  flex justify-start w-[calc(100%/6)]">
@@ -89,7 +120,7 @@ const Orders = () => {
                       9/10 @ 10:55
                     </p>
                     <p className="font-bold  flex justify-start w-[calc(100%/6)]">
-                      90 LE
+                      {total} LE
                     </p>
                     <p className="font-bold  flex justify-start w-[calc(100%/6)]">
                       {order.status}
