@@ -58,5 +58,7 @@ interface OrderObj {
       quantity: string;
     }
   ];
+  time?: string;
   status?: string;
+  _id?: string;
 }

@@ -24,6 +24,7 @@ const page = () => {
     postal_code: 0,
     phone: 0,
     order: [{ name: "s", id: "", price: "", picture: "", quantity: "" }],
+    time: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
 
