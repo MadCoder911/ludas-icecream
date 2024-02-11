@@ -13,19 +13,7 @@ import { useRouter } from "next/navigation";
 const page = () => {
   const [activeTab, setActiveTab] = useState<string>("orders");
   const router = useRouter();
-  useEffect(() => {
-    try {
-      axios({
-        method: "get",
-        url: process.env.API_URL + "/orders",
-        withCredentials: true,
-        headers: { "Content-Type": "application/json", credentials: "include" },
-      });
-      return;
-    } catch (error) {
-      router.push("/login");
-    }
-  }, []);
+
   return (
     <div className="flex">
       <DesktopNav activeTab={activeTab} setActiveTab={setActiveTab} />

@@ -1,7 +1,7 @@
 import ProductCard from "@/components/product-card/ProductCard";
 import "./products.css";
 async function getAllProducts(): Promise<FeaturedProduct[]> {
-  const products = await fetch(`${process.env.API_URL}/products/`, {
+  const products = await fetch(`${process.env.API_URL}/products`, {
     next: { revalidate: 1000 },
   })
     .then((res) => {

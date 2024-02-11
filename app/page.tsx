@@ -3,7 +3,7 @@ import Hero from "@/components/hero/Hero";
 import Email from "@/components/email/Email";
 import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 async function getData(): Promise<FeaturedProduct[]> {
-  const featuredProducts = await fetch(`${process.env.API_URL}/products/`, {
+  const featuredProducts = await fetch(`${process.env.API_URL}/products`, {
     next: { revalidate: 1000 },
   })
     .then((res) => {

@@ -4,10 +4,14 @@ import { CgDetailsMore } from "react-icons/cg";
 import { useState, useRef, useEffect } from "react";
 
 const ActionsBtn = ({
+  orderId,
+  handleOrderDelete,
   setOrderInfo,
   order,
   setShowOrderInfo,
 }: {
+  orderId: string;
+  handleOrderDelete: any;
   setOrderInfo: any;
   order: OrderObj;
   setShowOrderInfo: any;
@@ -34,6 +38,7 @@ const ActionsBtn = ({
     setOrderInfo(order);
     setShowOrderInfo(true);
   };
+
   return (
     <div className="relative " ref={buttonsRef}>
       <button
@@ -56,10 +61,13 @@ const ActionsBtn = ({
         >
           Order Info <CgDetailsMore className="text-[20px] ml-[35px]" />
         </button>
-        <button className="flex items-center w-[100%] py-1 hover:translate-x-[6px] transition-all ease-in-out">
+        {/* <button className="flex items-center w-[100%] py-1 hover:translate-x-[6px] transition-all ease-in-out">
           Edit Order <FaRegEdit className="text-[17px] ml-[35px]" />
-        </button>
-        <button className="flex items-center w-[100%] py-1 hover:translate-x-[6px] transition-all ease-in-out">
+        </button> */}
+        <button
+          onClick={() => handleOrderDelete(orderId)}
+          className="flex items-center w-[100%] py-1 hover:translate-x-[6px] transition-all ease-in-out"
+        >
           Delete Order{" "}
           <MdOutlineDeleteOutline className="text-[20px] ml-[15px] " />
         </button>
